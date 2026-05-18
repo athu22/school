@@ -1,0 +1,653 @@
+/* ==========================================================================
+   PREMIUM GLASSMORPHIC SCHOOL ID CARD BUILDER STYLESHEET
+   ========================================================================== */
+
+.id-cards-container {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-main);
+}
+
+/* Page Split Builder Layout */
+.id-cards-main-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  align-items: start;
+}
+
+/* Sidebar Selector List */
+.students-selector-card {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  padding: 1.25rem;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.selector-table-wrapper {
+  overflow-y: auto;
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.selector-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.selector-table th,
+.selector-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.selector-table th {
+  background: var(--background);
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.selector-table tr:hover td {
+  background: rgba(99, 102, 241, 0.03);
+}
+
+/* Builder Configuration Panel */
+.builder-config-bar {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.config-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.config-group label {
+  font-size: 0.775rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.config-btn-group {
+  display: flex;
+  background: var(--background);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  gap: 4px;
+}
+
+.config-tab-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.config-tab-btn.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Theme Dot Selectors */
+.theme-dots-wrap {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.theme-dot-item {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-dot-item.active {
+  border-color: var(--text-main);
+  transform: scale(1.15);
+}
+
+/* Live Preview Panel */
+.preview-pane-card {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preview-grid-flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  justify-items: center;
+}
+
+.preview-pair-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.5rem;
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  background: var(--background);
+}
+
+/* ==========================================================================
+   ID CARD ITEM STRUCTURAL LAYOUT STYLES
+   ========================================================================== */
+
+.id-card-item {
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Standard dimensions for Horizontal CR80 cards (85.6mm x 54mm or 3.375in x 2.125in) */
+.id-card-item.horizontal {
+  width: 3.375in;
+  height: 2.125in;
+  border-radius: 8px;
+}
+
+/* Standard dimensions for Vertical CR80 cards (54mm x 85.6mm or 2.125in x 3.375in) */
+.id-card-item.vertical {
+  width: 2.125in;
+  height: 3.375in;
+  border-radius: 12px;
+}
+
+/* ID Card Header Block */
+.id-card-header {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  box-sizing: border-box;
+}
+
+.id-card-item.vertical .id-card-header {
+  padding: 8px;
+  height: 52px;
+}
+
+.card-logo-container {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 850;
+  font-size: 0.8rem;
+  color: #333;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+.card-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card-header-titles {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.card-school-name {
+  font-weight: 850;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.25px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 190px;
+}
+
+.id-card-item.vertical .card-school-name {
+  max-width: 130px;
+}
+
+.card-school-addr {
+  font-size: 5.5px;
+  font-weight: 500;
+  opacity: 0.85;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 190px;
+}
+
+.id-card-item.vertical .card-school-addr {
+  max-width: 130px;
+}
+
+/* Card Body Section */
+.id-card-body-block {
+  flex: 1;
+  padding: 8px 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.id-card-item.vertical .id-card-body-block {
+  flex-direction: column;
+  padding: 10px 8px;
+  gap: 8px;
+}
+
+/* Student Photo frame */
+.card-photo-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.student-card-img {
+  width: 60px;
+  height: 72px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.student-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.student-id-lbl {
+  font-size: 6.5px;
+  font-weight: 800;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: #475569;
+  text-align: center;
+}
+
+/* Details List */
+.card-details-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5px;
+  text-align: left;
+}
+
+.id-card-item.vertical .card-details-block {
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  gap: 3.5px;
+}
+
+.card-st-name {
+  font-weight: 850;
+  font-size: 11px;
+  color: #1e293b;
+  margin-bottom: 2px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.id-card-item.vertical .card-st-name {
+  text-align: center;
+  border-bottom: none;
+  max-width: 170px;
+}
+
+.card-detail-row {
+  display: flex;
+  font-size: 7px;
+  line-height: 1.2;
+}
+
+.id-card-item.vertical .card-detail-row {
+  justify-content: center;
+}
+
+.card-detail-lbl {
+  font-weight: 600;
+  color: #64748b;
+  width: 62px;
+}
+
+.id-card-item.vertical .card-detail-lbl {
+  width: auto;
+  margin-right: 4px;
+}
+
+.card-detail-val {
+  font-weight: 750;
+  color: #1e293b;
+}
+
+/* Footer & Signatures */
+.id-card-footer {
+  height: 32px;
+  padding: 4px 12px;
+  border-top: 1px solid #f1f5f9;
+  background: #f8fafc;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  box-sizing: border-box;
+}
+
+.id-card-item.vertical .id-card-footer {
+  padding: 4px 10px;
+}
+
+.card-footer-addr {
+  font-size: 5px;
+  color: #64748b;
+  font-weight: 500;
+  max-width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.id-card-item.vertical .card-footer-addr {
+  display: none; /* Hide address on footer for vertical to save space */
+}
+
+.card-sig-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 5px;
+  font-weight: bold;
+  color: #334155;
+  margin-left: auto;
+}
+
+.sig-h-bar {
+  width: 48px;
+  height: 0.5px;
+  background: #334155;
+  margin-bottom: 2px;
+}
+
+/* ==========================================================================
+   THEME STYLING SCHEMES
+   ========================================================================== */
+
+/* 1. Theme Blue (Ocean Tech) */
+.theme-blue .id-card-header {
+  background: #0284c7;
+  color: #ffffff;
+}
+.theme-blue .card-st-name {
+  color: #0284c7;
+}
+
+/* 2. Theme Gold (Royal Academy) */
+.theme-gold .id-card-header {
+  background: #ca8a04;
+  color: #ffffff;
+}
+.theme-gold .card-st-name {
+  color: #ca8a04;
+}
+
+/* 3. Theme Crimson (Redwood) */
+.theme-crimson .id-card-header {
+  background: #dc2626;
+  color: #ffffff;
+}
+.theme-crimson .card-st-name {
+  color: #dc2626;
+}
+
+/* 4. Theme Emerald (Forest Eco) */
+.theme-emerald .id-card-header {
+  background: #059669;
+  color: #ffffff;
+}
+.theme-emerald .card-st-name {
+  color: #059669;
+}
+
+/* 5. Theme Gradient (Nebula Tech) */
+.theme-gradient .id-card-header {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  color: #ffffff;
+}
+.theme-gradient .card-st-name {
+  color: #6366f1;
+}
+
+/* 6. Theme Dark (Sleek Minimal) */
+.theme-dark .id-card-header {
+  background: #1e293b;
+  color: #ffffff;
+}
+.theme-dark .card-st-name {
+  color: #1e293b;
+}
+
+/* ==========================================================================
+   BORDER LAYOUT SCHEMES
+   ========================================================================== */
+
+/* Glassmorphic border shadow */
+.layout-glass {
+  border: none !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
+  border-radius: 12px !important;
+}
+
+/* Bold borders */
+.layout-bold {
+  border: 1.5px solid #000000 !important;
+}
+.layout-bold .id-card-header {
+  border-bottom: 1px solid #000000;
+}
+
+/* Minimalist border */
+.layout-minimal {
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   BACK PAGE STYLING LAYOUT
+   ========================================================================== */
+
+.id-card-item.back {
+  background: #ffffff;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.back-card-header {
+  text-align: center;
+  border-bottom: 1.5px solid var(--border);
+  padding-bottom: 4px;
+  margin-bottom: 6px;
+}
+
+.back-school-title {
+  font-size: 8px;
+  font-weight: 850;
+  text-transform: uppercase;
+  color: #334155;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.back-info-sub {
+  font-size: 6px;
+  font-weight: 750;
+  color: #dc2626;
+  letter-spacing: 0.25px;
+  margin-top: 1px;
+}
+
+.back-instructions-list {
+  padding-left: 12px;
+  margin: 4px 0;
+  font-size: 5.5px;
+  color: #475569;
+  text-align: left;
+}
+
+.back-instructions-list li {
+  margin-bottom: 2.5px;
+}
+
+.back-emergency-box {
+  border: 1px solid #fee2e2;
+  background: #fff5f5;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-top: 8px;
+  text-align: left;
+}
+
+.back-emergency-title {
+  font-size: 6px;
+  font-weight: bold;
+  color: #dc2626;
+  border-bottom: 0.5px solid #fee2e2;
+  padding-bottom: 2px;
+  margin-bottom: 3px;
+}
+
+.back-emergency-details {
+  font-size: 5.5px;
+  color: #475569;
+  line-height: 1.25;
+}
+
+.back-footer-copyright {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 5.5px;
+  font-weight: bold;
+  color: #64748b;
+  border-top: 0.5px solid #f1f5f9;
+  padding-top: 4px;
+  margin: 0 10px;
+}
+
+/* ==========================================================================
+   A4 PRINT SYSTEM AND ALIGNMENT SPECIFICATIONS
+   ========================================================================== */
+
+.print-only-container {
+  display: none;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  .print-only-container,
+  .print-only-container * {
+    visibility: visible;
+  }
+  
+  .print-only-container {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards horizontally across an A4 */
+    gap: 15mm 10mm;
+    padding: 10mm;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm; /* standard A4 width */
+    background: white !important;
+  }
+  
+  .id-card-item {
+    border: 1px solid #000000 !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    box-shadow: none !important;
+  }
+  
+  /* Horizontal card dimensions during print */
+  .id-card-item.horizontal {
+    width: 3.375in !important;
+    height: 2.125in !important;
+  }
+
+  /* Vertical card dimensions during print */
+  .id-card-item.vertical {
+    width: 2.125in !important;
+    height: 3.375in !important;
+  }
+}

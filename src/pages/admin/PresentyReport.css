@@ -1,0 +1,217 @@
+/* ==========================================================================
+   PREMIUM ATTENDANCE SUMMARY REPORT (PRESENTY REPORT) STYLESHEET
+   ========================================================================== */
+
+.presenty-report-container {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-main);
+}
+
+/* Statistics Overview Cards */
+.report-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.report-stat-card {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+
+.report-stat-val {
+  font-size: 2rem;
+  font-weight: 850;
+  color: var(--text-main);
+  margin-top: 8px;
+}
+
+.report-stat-lbl {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Report Table Container */
+.report-table-wrapper {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.report-table th, 
+.report-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.report-table th {
+  background: var(--background);
+  color: var(--text-main);
+  font-weight: 750;
+  font-size: 0.825rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.report-table tr:last-child td {
+  border-bottom: none;
+}
+
+.report-table tr:hover td {
+  background: rgba(99, 102, 241, 0.02);
+}
+
+/* Status Badges */
+.badge-excellent {
+  background: rgba(16, 185, 129, 0.08);
+  color: #10b981;
+  padding: 4px 12px;
+  border-radius: 30px;
+  font-size: 0.725rem;
+  font-weight: 800;
+  display: inline-block;
+}
+
+.badge-normal {
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--accent-indigo);
+  padding: 4px 12px;
+  border-radius: 30px;
+  font-size: 0.725rem;
+  font-weight: 800;
+  display: inline-block;
+}
+
+.badge-low {
+  background: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+  padding: 4px 12px;
+  border-radius: 30px;
+  font-size: 0.725rem;
+  font-weight: 800;
+  display: inline-block;
+}
+
+/* Progress bar inside cells */
+.report-progress-bg {
+  width: 100px;
+  height: 6px;
+  background: var(--border);
+  border-radius: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+.report-progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+/* Print Layout Specifications */
+.print-header-block {
+  display: none;
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #000;
+  padding-bottom: 1rem;
+}
+
+.print-signatures-block {
+  display: none;
+  justify-content: space-between;
+  margin-top: 3.5rem;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  .print-only-report,
+  .print-only-report * {
+    visibility: visible;
+  }
+  
+  .print-only-report {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white !important;
+    color: black !important;
+    padding: 20px !important;
+  }
+  
+  .presenty-report-container .presenty-filter-bar,
+  .presenty-report-container .report-stats-grid,
+  .presenty-report-container button {
+    display: none !important;
+  }
+  
+  .print-header-block {
+    display: block !important;
+  }
+  
+  .print-signatures-block {
+    display: flex !important;
+  }
+  
+  .report-table-wrapper {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  
+  .report-table {
+    border-collapse: collapse !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .report-table th, 
+  .report-table td {
+    border: 1px solid #000 !important;
+    padding: 8px 12px !important;
+  }
+  
+  .report-table th {
+    background: #f3f4f6 !important;
+    color: #000 !important;
+  }
+  
+  .badge-excellent,
+  .badge-normal,
+  .badge-low {
+    background: transparent !important;
+    padding: 0 !important;
+    font-size: 0.8rem !important;
+    font-weight: bold !important;
+  }
+  
+  .badge-excellent { color: #10b981 !important; }
+  .badge-normal { color: #6366f1 !important; }
+  .badge-low { color: #ef4444 !important; }
+}
