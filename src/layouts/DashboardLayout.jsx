@@ -3,7 +3,7 @@ import Sidebar from '../components/layout/Sidebar';
 import Navbar from '../components/layout/Navbar';
 import { Outlet } from 'react-router-dom';
 
-const DashboardLayout = () => {
+const DashboardLayout = ({ children }) => {
   const [isCollapsed, setIsCollapsed] = useState(() => localStorage.getItem('sidebar-collapsed') === 'true');
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const DashboardLayout = () => {
           minHeight: 'calc(100vh - 70px)',
           background: 'var(--background)'
         }}>
-          <Outlet />
+          {children || <Outlet />}
         </main>
       </div>
     </div>

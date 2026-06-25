@@ -27,7 +27,7 @@ const FeeCollection = () => {
     if (!formData.studentId || !formData.amount) return toast.error("Please fill all details");
 
     const student = students.find(s => s.id === formData.studentId);
-    
+
     setIsSubmitting(true);
     try {
       await collectFee({
@@ -53,16 +53,16 @@ const FeeCollection = () => {
 
       <div style={{ maxWidth: '600px' }}>
         <h1 style={{ fontSize: '1.875rem', marginBottom: '2rem' }}>Fee Collection</h1>
-        
+
         <div className="premium-card" style={{ padding: '2rem' }}>
           <form onSubmit={handleCollect} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div className="form-group">
               <label><FiUser /> Select Student</label>
-              <select 
-                required 
-                className="premium-input" 
+              <select
+                required
+                className="premium-input"
                 value={formData.studentId}
-                onChange={e => setFormData({...formData, studentId: e.target.value})}
+                onChange={e => setFormData({ ...formData, studentId: e.target.value })}
               >
                 <option value="">Choose student...</option>
                 {students.map(s => <option key={s.id} value={s.id}>{s.fullName} ({s.admissionNumber})</option>)}
@@ -72,10 +72,10 @@ const FeeCollection = () => {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div className="form-group">
                 <label>Fee Category</label>
-                <select 
+                <select
                   className="premium-input"
                   value={formData.feeType}
-                  onChange={e => setFormData({...formData, feeType: e.target.value})}
+                  onChange={e => setFormData({ ...formData, feeType: e.target.value })}
                 >
                   <option>Tuition Fee</option>
                   <option>Exam Fee</option>
@@ -86,13 +86,13 @@ const FeeCollection = () => {
               </div>
               <div className="form-group">
                 <label>Amount (₹)</label>
-                <input 
-                  type="number" 
-                  required 
-                  className="premium-input" 
+                <input
+                  type="number"
+                  required
+                  className="premium-input"
                   placeholder="0.00"
                   value={formData.amount}
-                  onChange={e => setFormData({...formData, amount: e.target.value})}
+                  onChange={e => setFormData({ ...formData, amount: e.target.value })}
                 />
               </div>
             </div>
@@ -100,10 +100,10 @@ const FeeCollection = () => {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div className="form-group">
                 <label><FiCreditCard /> Mode</label>
-                <select 
+                <select
                   className="premium-input"
                   value={formData.paymentMode}
-                  onChange={e => setFormData({...formData, paymentMode: e.target.value})}
+                  onChange={e => setFormData({ ...formData, paymentMode: e.target.value })}
                 >
                   <option>Cash</option>
                   <option>UPI / Online</option>
@@ -113,12 +113,12 @@ const FeeCollection = () => {
               </div>
               <div className="form-group">
                 <label><FiCalendar /> Date</label>
-                <input 
-                  type="date" 
-                  required 
+                <input
+                  type="date"
+                  required
                   className="premium-input"
                   value={formData.paymentDate}
-                  onChange={e => setFormData({...formData, paymentDate: e.target.value})}
+                  onChange={e => setFormData({ ...formData, paymentDate: e.target.value })}
                 />
               </div>
             </div>

@@ -288,10 +288,10 @@ const StudentForm = ({ onSubmit, initialData, isLoading }) => {
   const sections = [
     { id: 'academic', title: isMarathi ? 'शैक्षणिक माहिती (Academic)' : 'Academic Info', icon: <FiBook /> },
     { id: 'personal', title: isMarathi ? 'वैयक्तिक माहिती (Personal)' : 'Personal Info', icon: <FiUser /> },
-    { id: 'address', title: isMarathi ? 'पत्ता तपशील (Address)' : 'Address Details', icon: <FiHome /> },
+    /* { id: 'address', title: isMarathi ? 'पत्ता तपशील (Address)' : 'Address Details', icon: <FiHome /> },
     { id: 'parent', title: isMarathi ? 'पालकांचा तपशील (Parents)' : 'Parent Info', icon: <FiPhone /> },
     { id: 'prev_school', title: isMarathi ? 'मागील शाळा (Prev School)' : 'Previous School', icon: <FiGlobe /> },
-    { id: 'bank', title: isMarathi ? 'बँक तपशील (Bank)' : 'Bank Details', icon: <FiDollarSign /> },
+    { id: 'bank', title: isMarathi ? 'बँक तपशील (Bank)' : 'Bank Details', icon: <FiDollarSign /> }, */
   ];
 
   const sectionIndex = sections.findIndex(s => s.id === activeSection);

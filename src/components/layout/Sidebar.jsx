@@ -8,7 +8,7 @@ import {
   DollarSign, TrendingUp, TrendingDown, Book, Award,
   Edit3, Download, Lock, PanelLeftClose, PanelLeftOpen,
   LogOut, Briefcase, GraduationCap, Building2, UserCircle, Calculator,
-  ArrowRightLeft, PlusCircle, Weight, Map, UserCheck
+  ArrowRightLeft, PlusCircle, Weight, Map, UserCheck, Layers
 } from 'lucide-react';
 import useAuthStore from '../../store/authStore';
 import { useLanguage } from '../../context/LanguageContext';
@@ -103,6 +103,12 @@ const Sidebar = () => {
               label: isMarathi ? 'वर्ग' : 'Classes'
             },
             {
+              nameKey: 'divisions',
+              path: '/admin/divisions',
+              icon: <Layers size={18} />,
+              label: isMarathi ? 'तुकड्या' : 'Divisions'
+            },
+            {
               nameKey: 'teachers',
               path: '/admin/teachers',
               icon: <UserCheck size={18} />,
@@ -120,12 +126,12 @@ const Sidebar = () => {
               icon: <FileSpreadsheet size={18} />,
               label: isMarathi ? 'हजेरी अहवाल' : 'Presenty Report'
             },
-            {
+            /* {
               nameKey: 'idCards',
               path: '/admin/id-cards',
               icon: <CreditCard size={18} />,
               label: isMarathi ? 'ओळखपत्र' : 'ID Cards'
-            },
+            }, */
           ]
         },
 
@@ -134,13 +140,19 @@ const Sidebar = () => {
           nameKey: 'examinations',
           hasSubmenu: true,
           icon: <FileText size={20} />,
-          label: isMarathi ? 'परीक्षा' : 'Examinations',
+          label: isMarathi ? 'परीक्षा आणि निकाल' : 'Exams & Results',
           submenu: [
             {
               nameKey: 'examList',
               path: '/admin/exams',
               icon: <List size={18} />,
               label: isMarathi ? 'परीक्षा यादी' : 'Exam List'
+            },
+            {
+              nameKey: 'addExam',
+              path: '/admin/exams/add',
+              icon: <PlusCircle size={18} />,
+              label: isMarathi ? 'परीक्षा वेळापत्रक' : 'Schedule Exam'
             },
             {
               nameKey: 'results',
@@ -183,6 +195,12 @@ const Sidebar = () => {
               label: isMarathi ? 'दैनंदिन नोंदवही' : 'Day Book'
             },
             {
+              nameKey: 'profitloss',
+              path: '/admin/accounts/profit-loss',
+              icon: <TrendingUp size={18} />,
+              label: isMarathi ? 'नफा आणि तोटा' : 'Profit & Loss'
+            },
+            {
               nameKey: 'cashbook',
               path: '/admin/accounts/cash-book',
               icon: <Wallet size={18} />,
@@ -204,7 +222,7 @@ const Sidebar = () => {
         },
 
         // Certificates & Settings
-        {
+        /* {
           nameKey: 'certificates',
           hasSubmenu: true,
           icon: <Award size={20} />,
@@ -247,7 +265,7 @@ const Sidebar = () => {
               label: isMarathi ? 'चारित्र्य प्रमाणपत्र' : 'Character Certificate'
             },
           ]
-        },
+        }, */
         {
           nameKey: 'settings',
           path: '/admin/settings',

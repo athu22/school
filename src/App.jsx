@@ -128,6 +128,7 @@ function App() {
             <Route path="exams/add" element={<AddExam />} />
             <Route path="exams/mark-entry/:id" element={<MarkEntry />} />
             <Route path="exams/results/:id" element={<ResultList />} />
+            <Route path="results" element={<ResultList />} />
 
             {/* Certificate Routes */}
             <Route path="certificates" element={<CertificateDashboard />} />

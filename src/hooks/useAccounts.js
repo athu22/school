@@ -6,6 +6,8 @@ export const useAccounts = (schoolId) => {
   const [transactions, setTransactions] = useState([]);
   const [fees, setFees] = useState([]);
   const [expenses, setExpenses] = useState([]);
+  const [ledgers, setLedgers] = useState([]);
+  const [vouchers, setVouchers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,6 +29,18 @@ export const useAccounts = (schoolId) => {
     const qExp = query(collection(db, 'expenses'), where('schoolId', '==', schoolId));
     const unsubExp = onSnapshot(qExp, (snapshot) => {
       setExpenses(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    });
+
+    // 4. Ledgers Listener
+    const qLedgers = query(collection(db, 'ledgers'), where('schoolId', '==', schoolId));
+    const unsubLedgers = onSnapshot(qLedgers, (snapshot) => {
+      setLedgers(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    });
+
+    // 5. Vouchers Listener
+    const qVouchers = query(collection(db, 'vouchers'), where('schoolId', '==', schoolId));
+    const unsubVouchers = onSnapshot(qVouchers, (snapshot) => {
+      setVouchers(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
       setLoading(false);
     });
 
@@ -34,8 +48,10 @@ export const useAccounts = (schoolId) => {
       unsubTrans();
       unsubFees();
       unsubExp();
+      unsubLedgers();
+      unsubVouchers();
     };
   }, [schoolId]);
 
-  return { transactions, fees, expenses, loading };
+  return { transactions, fees, expenses, ledgers, vouchers, loading };
 };
